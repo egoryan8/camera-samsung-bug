@@ -3,6 +3,7 @@
   padding: 5vh 10vw;
   text-align: center;
   height: 100dvh;
+  overflow: hidden;
   max-width: 100vw;
 }
 
