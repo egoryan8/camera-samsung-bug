@@ -17,7 +17,7 @@ function App() {
     <div>
       <h1>Try to fix Samsung camera bug</h1>
       <div className='camera__wrapper'>
-        <Webcam mirrored frontCamera={cameraType === 'user'} mainCamera={cameraType === 'environment'}>
+        <Webcam mirrored={false} frontCamera={cameraType === 'user'} mainCamera={cameraType === 'environment'}>
           {({ getSnapshot }) => (
             <div className='camera__buttons'>
               <button className='button' onClick={handleCameraSwitch}>
