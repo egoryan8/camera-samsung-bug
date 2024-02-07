@@ -33,3 +33,8 @@
   height: 100%;
   object-fit: cover;
 }
+
+.modal__wrapper {
+  max-height: 100dvh;
+  overflow: hidden;
+}

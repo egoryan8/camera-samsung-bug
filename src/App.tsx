@@ -70,7 +70,8 @@ function App() {
       </div>
 
       {isOpen && (
-        <Modal onClose={onClose} size='xl' isOpen={isOpen}>
+        <div className='modal__wrapper'>
+        <Modal onClose={onClose} size='full' isOpen={isOpen}>
           <ModalOverlay/>
           <ModalContent>
             <ModalHeader>Captured photo</ModalHeader>
@@ -83,11 +84,9 @@ function App() {
                 alt='Dan Abramov'
               />
             </ModalBody>
-            <ModalFooter>
-              <Button onClick={onClose}>Close</Button>
-            </ModalFooter>
           </ModalContent>
         </Modal>
+        </div>
       )}
     </div>
   )
