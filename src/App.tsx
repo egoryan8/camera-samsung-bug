@@ -14,8 +14,8 @@ function App() {
   }, [cameraType])
 
   return (
-    <div>
-      <h1>Try to fix Samsung camera bug</h1>
+    <>
+      <h3>Try to fix Samsung camera bug</h3>
       <div className='camera__wrapper'>
         <Webcam className='camera__stream' mirrored={false} frontCamera={cameraType === 'user'} mainCamera={cameraType === 'environment'}>
           {({ getSnapshot }) => (
@@ -31,7 +31,7 @@ function App() {
         </Webcam>
 
       </div>
-    </div>
+    </>
   )
 }
 
