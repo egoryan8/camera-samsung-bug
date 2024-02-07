@@ -17,7 +17,7 @@ import {FaCamera} from "react-icons/fa";
 import {GoArrowSwitch} from "react-icons/go";
 
 function App() {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const {isOpen, onOpen, onClose} = useDisclosure()
   const [cameraType, setCameraType] = useState('user');
   const [captured, setCaptured] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -36,60 +36,59 @@ function App() {
     }, 1000)
   }
 
-  if (isOpen) {
-    return (
-      <Modal onClose={onClose} size={'full'} isOpen={isOpen}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Captured photo</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <Image
-              boxSize='fit-content'
-              objectFit='cover'
-              src={captured}
-              alt='Dan Abramov'
-            />
-          </ModalBody>
-          <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    )
-  }
 
   return (
     <div className='wrapper'>
       <Heading as='h1'>
         Try to fix Samsung camera bug...
       </Heading>
-        <div className='camera__wrapper'>
-          {isLoading ? (
-            <Spinner
-              mt={'30dvh'}
-              thickness='4px'
-              speed='0.65s'
-              emptyColor='gray.200'
-              color='blue.500'
-              size='xl'
-            />
-          ) : (
-            <Webcam className='camera__stream' mirrored={false} frontCamera={cameraType === 'user'}
-                    mainCamera={cameraType === 'environment'}>
-              {({getSnapshot}) => (
-                <Stack direction='row' spacing={4}>
-                  <Button onClick={handleCameraSwitch} colorScheme='white' variant='outline'>
-                    <GoArrowSwitch />
-                  </Button>
-                  <Button colorScheme='white' variant='outline' onClick={() => handleCapture(getSnapshot())}>
-                    <FaCamera />
-                  </Button>
-                </Stack>
-              )}
-            </Webcam>
-          )}
-        </div>
+      <div className='camera__wrapper'>
+        {isLoading ? (
+          <Spinner
+            mt={'30dvh'}
+            thickness='4px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='blue.500'
+            size='xl'
+          />
+        ) : (
+          <Webcam className='camera__stream' mirrored={false} frontCamera={cameraType === 'user'}
+                  mainCamera={cameraType === 'environment'}>
+            {({getSnapshot}) => (
+              <Stack direction='row' spacing={4}>
+                <Button onClick={handleCameraSwitch} colorScheme='white' variant='outline'>
+                  <GoArrowSwitch/>
+                </Button>
+                <Button colorScheme='white' variant='outline' onClick={() => handleCapture(getSnapshot())}>
+                  <FaCamera/>
+                </Button>
+              </Stack>
+            )}
+          </Webcam>
+        )}
+      </div>
+
+      {isOpen && (
+        <Modal onClose={onClose} size='3xl' isOpen={isOpen} sx={{height: '100dvh'}}>
+          <ModalOverlay/>
+          <ModalContent>
+            <ModalHeader>Captured photo</ModalHeader>
+            <ModalCloseButton/>
+            <ModalBody sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                boxSize='fit-content'
+                objectFit='cover'
+                src={captured}
+                alt='Dan Abramov'
+              />
+            </ModalBody>
+            <ModalFooter>
+              <Button onClick={onClose}>Close</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      )}
     </div>
   )
 }
