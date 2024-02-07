@@ -11,7 +11,7 @@ import {
   Spinner,
   Stack,
   Image,
-  useDisclosure, Center
+  useDisclosure
 } from '@chakra-ui/react'
 import {FaCamera} from "react-icons/fa";
 import {GoArrowSwitch} from "react-icons/go";
