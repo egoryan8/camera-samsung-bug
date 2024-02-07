@@ -70,7 +70,7 @@ function App() {
       </div>
 
       {isOpen && (
-        <Modal onClose={onClose} size='3xl' isOpen={isOpen}>
+        <Modal onClose={onClose} size='xl' isOpen={isOpen}>
           <ModalOverlay/>
           <ModalContent>
             <ModalHeader>Captured photo</ModalHeader>
