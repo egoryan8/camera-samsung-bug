@@ -79,7 +79,7 @@ function App() {
             <ModalBody sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
               <Image
                 boxSize='80dvh'
-                objectFit='cover'
+                objectFit='contain'
                 src={captured}
                 alt='Dan Abramov'
               />
