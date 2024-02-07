@@ -78,7 +78,7 @@ function App() {
             <ModalCloseButton/>
             <ModalBody sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
               <Image
-                boxSize='fit-content'
+                boxSize='80dvh'
                 objectFit='cover'
                 src={captured}
                 alt='Dan Abramov'
