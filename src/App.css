@@ -1,13 +1,21 @@
 #root {
   margin: 0 auto;
-  padding: 0 10vw;
+  padding: 5vh 10vw;
   text-align: center;
-  max-height: 100dvh;
+  height: 100dvh;
   max-width: 100vw;
+}
+
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .camera__wrapper {
   max-width: 100%;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   gap: 10px;
