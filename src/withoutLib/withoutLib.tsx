@@ -4,7 +4,7 @@ import {GoArrowSwitch} from "react-icons/go";
 import {FaCamera} from "react-icons/fa";
 
 
-export const WithoutLib = ({setImage, type, switchCamera}: any) => {
+export const WithoutLib = ({handleCapture, type, switchCamera}: any) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export const WithoutLib = ({setImage, type, switchCamera}: any) => {
     };
   }, [type]);
 
-  const handleCapture = () => {
+  const onHandleCapture = () => {
     if (!videoRef.current) {
       return;
     }
@@ -51,7 +51,7 @@ export const WithoutLib = ({setImage, type, switchCamera}: any) => {
     const context = canvas.getContext('2d');
     if (context && videoRef.current) {
       context.drawImage(videoRef.current as unknown as any, 0, 0, canvas.width, canvas.height);
-      setImage(canvas.toDataURL('image/jpeg'));
+      handleCapture(canvas.toDataURL('image/jpeg'));
     }
   };
 
@@ -67,7 +67,7 @@ export const WithoutLib = ({setImage, type, switchCamera}: any) => {
         <Button onClick={switchCamera} colorScheme='white' variant='outline'>
           <GoArrowSwitch/>
         </Button>
-        <Button colorScheme='white' variant='outline' onClick={handleCapture}>
+        <Button colorScheme='white' variant='outline' onClick={onHandleCapture}>
           <FaCamera/>
         </Button>
       </Stack>
