@@ -33,7 +33,7 @@ export const WithoutLib = ({setImage, type, switchCamera}: any) => {
 
     return () => {
       if (mediaStream) {
-        mediaStream.getTracks().forEach(track => {
+        mediaStream.getTracks().forEach((track: any) => {
           track.stop(); // Остановка всех медиа-треков
         });
       }
