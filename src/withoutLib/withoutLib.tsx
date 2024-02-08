@@ -8,7 +8,7 @@ export const WithoutLib = ({setImage, type, switchCamera}: any) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
-    let mediaStream;
+    let mediaStream: any;
 
     const startCamera = async () => {
       try {
