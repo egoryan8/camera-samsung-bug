@@ -30,6 +30,7 @@
 }
 
 .camera__stream {
+  max-width: 700px;
   width: 100%;
   height: 100%;
   object-fit: contain;

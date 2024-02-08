@@ -1,0 +1,140 @@
+.wrapper {
+    max-width: 100%;
+    height: 100dvh;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: rgba(var(--black), 0.7);
+}
+
+.videoWrapper {
+    width: 100%;
+    height: 100dvh;
+    position: relative;
+}
+
+.passportVideo {
+    margin-top: 152px;
+    height: calc(100dvh - 152px - 133px);
+}
+
+.video {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.visible {
+    display: block;
+}
+
+.overlay {
+    box-sizing: content-box;
+    position: absolute;
+    z-index: 2;
+    width: 327px;
+    height: 391px;
+    border: 1000px solid rgba(var(--black), 0.7);
+    border-radius: 100%;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circleBorder {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    border-radius: 100%;
+    border: 4px solid rgba(var(--white), 0.5);
+}
+
+.passportBorder {
+    position: absolute;
+    left: 50%;
+    top: 172px;
+    transform: translateX(-50%);
+    z-index: 2;
+    background-image: url('../../../../../static/images/passportBorder.svg');
+    width: 90%;
+    max-width: 347px;
+    height: calc(100dvh - 172px - 133px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.closeIcon {
+    position: absolute;
+    right: 24px;
+    top: 48px;
+    z-index: 3;
+    color: rgb(var(--white));
+}
+
+.text {
+    position: absolute;
+    width: 100%;
+    max-width: 320px;
+    top: 97px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: rgb(var(--white));
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 72px;
+    height: 72px;
+    background-color: rgb(var(--white));
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.button::after {
+    box-sizing: content-box;
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    bottom: -6px;
+    left: -6px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+@media (max-width: 370px) {
+    .overlay {
+        width: 90%;
+        height: 110vw;
+    }
+}
+
+@media (max-height: 780px) {
+    .passportBorder {
+        height: calc(100dvh - 172px - 153px);
+    }
+}
+
+@media (max-height: 670px) {
+    .closeIcon {
+        top: 20px;
+    }
+    .text {
+        top: 64px;
+    }
+    .overlay {
+        top: 50%;
+    }
+}

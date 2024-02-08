@@ -1,26 +1,20 @@
-import './App.css'
-import {Webcam} from "react-webcam-ultimate";
 import {useState} from "react";
 import {
-  Button,
   Heading,
-  Modal, ModalBody, ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
-  Spinner,
-  Stack,
-  Image,
-  useDisclosure
+  useDisclosure, Switch, Center
 } from '@chakra-ui/react'
-import {FaCamera} from "react-icons/fa";
-import {GoArrowSwitch} from "react-icons/go";
+import {ModalWithImage} from "./modalWithImage/modalWithImage";
+import {WithLib} from "./withLib/withLib";
+import {Loader} from "./loader/loader";
+import './App.css'
+import {WithoutLib} from "./withoutLib/withoutLib";
 
 function App() {
   const {isOpen, onOpen, onClose} = useDisclosure()
   const [cameraType, setCameraType] = useState('user');
   const [captured, setCaptured] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [wthLib, setWithLib] = useState(false);
 
   const handleCameraSwitch = () => {
     setCameraType(prevState => prevState === 'user' ? 'environment' : 'user');
@@ -42,52 +36,24 @@ function App() {
       <Heading as='h1'>
         Try to fix Samsung camera bug...
       </Heading>
+      <Center gap='10px'>
+        <p>
+          Without package
+        </p>
+        <Switch id='withLib' isChecked={wthLib} onChange={e => setWithLib(e.target.checked)}/>
+        <p>
+          With package
+        </p>
+      </Center>
       <div className='camera__wrapper'>
-        {isLoading ? (
-          <Spinner
-            mt={'30dvh'}
-            thickness='4px'
-            speed='0.65s'
-            emptyColor='gray.200'
-            color='blue.500'
-            size='xl'
-          />
-        ) : (
-          <Webcam className='camera__stream' mirrored={false} frontCamera={cameraType === 'user'}
-                  mainCamera={cameraType === 'environment'}>
-            {({getSnapshot}) => (
-              <Stack direction='row' spacing={4}>
-                <Button onClick={handleCameraSwitch} colorScheme='white' variant='outline'>
-                  <GoArrowSwitch/>
-                </Button>
-                <Button colorScheme='white' variant='outline' onClick={() => handleCapture(getSnapshot())}>
-                  <FaCamera/>
-                </Button>
-              </Stack>
-            )}
-          </Webcam>
-        )}
+        {isLoading
+          ? <Loader/>
+          : wthLib
+            ? <WithLib type={cameraType} handleCapture={handleCapture} switchCamera={handleCameraSwitch}/>
+            : <WithoutLib type={cameraType} setImage={setCaptured} switchCamera={handleCameraSwitch} />
+        }
       </div>
-
-      {isOpen && (
-        <div className='modal__wrapper'>
-        <Modal onClose={onClose} size='full' isOpen={isOpen}>
-          <ModalOverlay/>
-          <ModalContent>
-            <ModalHeader>Captured photo</ModalHeader>
-            <ModalCloseButton/>
-            <ModalBody sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-              <Image
-                boxSize='80dvh'
-                objectFit='contain'
-                src={captured}
-                alt='Dan Abramov'
-              />
-            </ModalBody>
-          </ModalContent>
-        </Modal>
-        </div>
-      )}
+      {isOpen && <ModalWithImage isOpen={isOpen} onClose={onClose} photo={captured}/>}
     </div>
   )
 }
