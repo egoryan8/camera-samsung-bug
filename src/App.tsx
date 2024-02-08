@@ -40,7 +40,7 @@ function App() {
         <p>
           Without package
         </p>
-        <Switch id='withLib' isChecked={wthLib} onChange={e => setWithLib(e.target.checked)}/>
+        <Switch id='withLib' size='lg' isChecked={wthLib} onChange={e => setWithLib(e.target.checked)}/>
         <p>
           With package
         </p>
@@ -50,7 +50,7 @@ function App() {
           ? <Loader/>
           : wthLib
             ? <WithLib type={cameraType} handleCapture={handleCapture} switchCamera={handleCameraSwitch}/>
-            : <WithoutLib type={cameraType} setImage={setCaptured} switchCamera={handleCameraSwitch} />
+            : <WithoutLib type={cameraType} handleCapture={handleCapture} switchCamera={handleCameraSwitch} />
         }
       </div>
       {isOpen && <ModalWithImage isOpen={isOpen} onClose={onClose} photo={captured}/>}
