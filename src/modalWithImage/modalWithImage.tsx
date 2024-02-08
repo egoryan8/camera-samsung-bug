@@ -1,6 +1,6 @@
 import {Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay} from "@chakra-ui/react";
 
-export const ModalWithImage = ({onClose, isOpen, photo}) => {
+export const ModalWithImage = ({onClose, isOpen, photo}: any) => {
   return (
     <div className='modal__wrapper'>
       <Modal onClose={onClose} size='full' isOpen={isOpen}>

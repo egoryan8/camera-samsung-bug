@@ -3,7 +3,7 @@ import {GoArrowSwitch} from "react-icons/go";
 import {FaCamera} from "react-icons/fa";
 import {Webcam} from "react-webcam-ultimate";
 
-export const WithLib = ({switchCamera, type, handleCapture}) => {
+export const WithLib = ({switchCamera, type, handleCapture}: any) => {
   return (
     <Webcam className='camera__stream' mirrored={false} frontCamera={type === 'user'}
             mainCamera={type === 'environment'}>
