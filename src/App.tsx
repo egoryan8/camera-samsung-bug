@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {
   Heading,
   useDisclosure, Switch, Center, Button
@@ -39,6 +39,10 @@ function App() {
       setIsLoading(false)
     }, 1000)
   }
+
+  useEffect(() => {
+    setCode('123456')
+  }, []);
 
 
   return (
