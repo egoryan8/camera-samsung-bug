@@ -1,15 +1,18 @@
 import {useState} from "react";
 import {
   Heading,
-  useDisclosure, Switch, Center
+  useDisclosure, Switch, Center, Button
 } from '@chakra-ui/react'
 import {ModalWithImage} from "./modalWithImage/modalWithImage";
 import {WithLib} from "./withLib/withLib";
 import {Loader} from "./loader/loader";
 import './App.css'
 import {WithoutLib} from "./withoutLib/withoutLib";
+import ym from "react-yandex-metrika";
+import { v4 as uuid } from 'uuid';
 
 function App() {
+  const id = uuid();
   const {isOpen, onOpen, onClose} = useDisclosure()
   const [cameraType, setCameraType] = useState('user');
   const [captured, setCaptured] = useState('');
@@ -20,6 +23,9 @@ function App() {
     setCameraType(prevState => prevState === 'user' ? 'environment' : 'user');
   }
 
+  const sendYm = () => {
+    ym('reachGoal', 'testIdToMetric', {userId: id})
+  }
   const handleCapture = (photo?: string) => {
     if (!photo) return;
     setIsLoading(true);
@@ -45,6 +51,7 @@ function App() {
           With package
         </p>
       </Center>
+      <Button onClick={sendYm}>Send ym</Button>
       <div className='camera__wrapper'>
         {isLoading
           ? <Loader/>
