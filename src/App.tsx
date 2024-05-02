@@ -19,7 +19,7 @@ function App() {
   const [captured, setCaptured] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [wthLib, setWithLib] = useState(false);
-  const formattedParam = `id клиента - ${id}, код услуги - ${code}`;
+  // const formattedParam = `id клиента - ${id}, код услуги - ${code}`;
 
   const handleCameraSwitch = () => {
     setCameraType(prevState => prevState === 'user' ? 'environment' : 'user');
@@ -27,7 +27,7 @@ function App() {
   }
 
   const sendYm = () => {
-    ym('reachGoal', 'testIdToMetric', {testParam: formattedParam})
+    ym('reachGoal', 'testIdToMetric', {clientId: id, serviceCode: code})
   }
 
   const handleCapture = (photo?: string) => {
