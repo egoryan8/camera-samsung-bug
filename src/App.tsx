@@ -21,11 +21,13 @@ function App() {
 
   const handleCameraSwitch = () => {
     setCameraType(prevState => prevState === 'user' ? 'environment' : 'user');
+    ym('reachGoal','buttonWasClicked')
   }
 
   const sendYm = () => {
     ym('reachGoal', 'testIdToMetric', {userId: id})
   }
+
   const handleCapture = (photo?: string) => {
     if (!photo) return;
     setIsLoading(true);
