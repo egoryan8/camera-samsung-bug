@@ -13,11 +13,13 @@ import { v4 as uuid } from 'uuid';
 
 function App() {
   const id = uuid();
+  const [code, setCode] = useState('0123123');
   const {isOpen, onOpen, onClose} = useDisclosure()
   const [cameraType, setCameraType] = useState('user');
   const [captured, setCaptured] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [wthLib, setWithLib] = useState(false);
+  const formattedParam = `id клиента - ${id}, код услуги - ${code}`;
 
   const handleCameraSwitch = () => {
     setCameraType(prevState => prevState === 'user' ? 'environment' : 'user');
@@ -25,7 +27,7 @@ function App() {
   }
 
   const sendYm = () => {
-    ym('reachGoal', 'testIdToMetric', {userId: id})
+    ym('reachGoal', 'testIdToMetric', {testParam: formattedParam})
   }
 
   const handleCapture = (photo?: string) => {
