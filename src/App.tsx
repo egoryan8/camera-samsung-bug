@@ -48,18 +48,17 @@ function App() {
   return (
     <div className='wrapper'>
       <Heading as='h1'>
-        Try to fix Samsung camera bug...
+        Try to fix camera bug...
       </Heading>
       <Center gap='10px'>
         <p>
-          Without package
+          Без либы
         </p>
         <Switch id='withLib' size='lg' isChecked={wthLib} onChange={e => setWithLib(e.target.checked)}/>
         <p>
-          With package
+          С либой
         </p>
       </Center>
-      <Button onClick={sendYm}>Send ym</Button>
       <div className='camera__wrapper'>
         {isLoading
           ? <Loader/>
