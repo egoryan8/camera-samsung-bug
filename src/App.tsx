@@ -1,33 +1,23 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {
   Heading,
-  useDisclosure, Switch, Center, Button
+  useDisclosure, Switch, Center
 } from '@chakra-ui/react'
 import {ModalWithImage} from "./modalWithImage/modalWithImage";
 import {WithLib} from "./withLib/withLib";
 import {Loader} from "./loader/loader";
 import './App.css'
 import {WithoutLib} from "./withoutLib/withoutLib";
-import ym from "react-yandex-metrika";
-import { v4 as uuid } from 'uuid';
 
 function App() {
-  const id = uuid();
-  const [code, setCode] = useState('0123123');
   const {isOpen, onOpen, onClose} = useDisclosure()
   const [cameraType, setCameraType] = useState('user');
   const [captured, setCaptured] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [wthLib, setWithLib] = useState(false);
-  // const formattedParam = `id клиента - ${id}, код услуги - ${code}`;
 
   const handleCameraSwitch = () => {
     setCameraType(prevState => prevState === 'user' ? 'environment' : 'user');
-    ym('reachGoal','buttonWasClicked')
-  }
-
-  const sendYm = () => {
-    ym('reachGoal', 'testIdToMetric', {clientId: id, serviceCode: code})
   }
 
   const handleCapture = (photo?: string) => {
@@ -39,11 +29,6 @@ function App() {
       setIsLoading(false)
     }, 1000)
   }
-
-  useEffect(() => {
-    setCode('123456')
-  }, []);
-
 
   return (
     <div className='wrapper'>
